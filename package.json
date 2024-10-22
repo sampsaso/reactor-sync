@@ -1,16 +1,16 @@
 {
-  "name": "@adobe/reactor-sync",
+  "name": "@sampsaso/reactor-sync",
   "version": "0.1.0",
   "description": "Command line tool for syncing data to and from Adobe Launch to a local directory.",
   "author": {
-    "name": "Adobe Systems",
-    "url": "http://adobe.com",
-    "email": "bbythewa@adobe.com"
+    "name": "Sampsa",
+    "url": "https://accrease.com",
+    "email": "sampsa@accrease.com"
   },
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git@github.com:adobe/reactor-sync.git"
+    "url": "git@github.com:sampsaso/reactor-sync.git"
   },
   "keywords": [
     "launch",
