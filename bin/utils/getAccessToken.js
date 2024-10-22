@@ -11,7 +11,6 @@ governing permissions and limitations under the License.
 */
 
 const fs = require('fs');
-const jwt = require('jwt-simple');
 const request = require('request-promise-native');
 
 async function checkAccessToken(args) {
@@ -42,9 +41,6 @@ async function getAccessToken(settings) {
   if (!environment) {
     throw Error('settings file does not have an "environment" property.');
   }
-  if (!environment.jwt) {
-    throw Error('settings file does not have an "environment.jwt" property.');
-  }
 
   let privateKeyContent;
 
@@ -55,23 +51,19 @@ async function getAccessToken(settings) {
     throw Error('Private Key file does not exist at that location.');
   }
 
-  // generate a jwtToken
-  integration.payload.exp = Math.floor(Date.now() / 1000) + 60 * 60 * 24;
-  const jwtToken = jwt.encode(integration.payload, privateKeyContent, 'RS256');
-
-  // Make a request to exchange the jwt token for a bearer token
   try {
 
     const body = await request({
       method: 'POST',
-      url: environment.jwt,
+      url: environment.oauth,
       headers: {
         'Cache-Control': 'no-cache'
       },
       form: {
+        grant_type: 'client_credentials',
         client_id: integration.clientId,
         client_secret: integration.clientSecret,
-        jwt_token: jwtToken
+        scope: 'reactor_approver,reactor_publisher,reactor_developer,reactor_it_admin,openid,AdobeID,additional_info.projectedProductContext'
       },
       transform: JSON.parse
     });
