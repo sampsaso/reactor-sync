@@ -1,6 +1,8 @@
 # reactor-sync
 
-:warning: **This repo is no longer maintained** Due to time constraints, I am no longer maintaining this repository any longer.  I'm archiving it and leaving it read-only so that you can use it as an example of how you might implement something like this on your own.  Feel free to fork and modify it to your needs.
+Exprimental case testing Tags syncing. No real-world usecases.
+
+...
 
 Command line tool for syncing data to and from Adobe Launch to a local directory.
 
